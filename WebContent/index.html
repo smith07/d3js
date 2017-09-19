@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>TR Labs Data Visualization</title>
+    <link rel="stylesheet" href="css/TRL_common.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/rb_fta_timelines_15.css">
+    <!--[if lte IE 9]>
+    <script src="js/aight.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="trl_wrapper">
+        <div class="trl_modal instructions">
+            <div class="content">
+                <div class="close"><i class="fa fa-window-close" aria-hidden="true"></i></div>
+                <div class="info start">
+                    <div class="header">How to read this chart</div>
+                    <div class="txt">This visualization is an exploration of multidimensional data about trade among NAFTA countries. The charts are connected and interactive; mouse over and click to explore and change them, and consult the explanations below for further detail.
+                    </div>
+                </div>
+                <div class="info col1">
+                    <div class="header">Trade over time</div>
+                    <div class="txt">Import and export amounts for each year are shown along this timeline. Solid colors show trade within NAFTA, and striped colors show trade with the rest of the world.</div>
+                </div>
+                <div class="info tline">
+                    <div class="header">Timeline control</div>
+                    <div class="txt">Drag the slider or click the play arrow to move through time</div>
+                </div>
+                <div class="info col2">
+                    <div class="header">Network view</div>
+                    <div class="txt">The network graph shows the import-export connections between NAFTA countries at a single point in time. The width of the paths indicates volume of trade, and the size of the hexagons show each country's relative volume of exports within NAFTA.</div>
+                </div>
+                <div class="info col3">
+                    <div class="header">Filter by commodity</div>
+                    <div class="txt">Click commodity labels to filter the data by commodity type.</div>
+                </div>
+                <div class="info aboutData">
+                    <div class="header">About the data</div>
+                    <p>Trade data comes from the <a href="https://comtrade.un.org/" target="_blank">United Nations Comtrade website</a>. Dollar amounts are inflation-adjusted to 2015 dollars, using the <a href="http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=XU" target="_blank">World Bank's North American inflaction adjustment table</a>. Commodities are classified in accordance with the <a href="https://hts.usitc.gov/current" target="_blank">Harmonized Tariff Schedule</a> taxonomy and are aggregated at the Section or Chapter level, with the exception of crude oil (Heading 2709). NAFTA country trade data is consistently available only from 1990 on, and prior to 2010 is only available at annual intervals.</p>
+                </div>
+            </div>
+            <div class="bg"></div>
+        </div>
+        <div class="trl_pageHeader">
+            <div class="headline">What does trade within NAFTA look like?</div>
+            <div class="subhead">
+                <div class="help expandInstructions"><i class="fa fa-question-circle" aria-hidden="true"></i> how to read</div>
+                <!-- <div class="help expandInfo"><i class="fa fa-info-circle" aria-hidden="true"></i> about the data</div> -->
+            </div>
+        </div>
+        <div class="staticImage">
+            <!-- <img src="img/rb_timelines.png" srcset="img/rb_timelines_2x.png 2x" alt="NAFTA Timelines" /> -->
+            <div class="message">For the interactive version please view on a larger screen</div>
+            <img src="img/nafta_timeline_10s_600.gif" alt="animated chart">
+        </div>
+        <div class="trl_chart" id="trl_chart_NAFTA">
+            <div class="col col1">
+                <div class="colHeader">
+                    <div class="txt col1txt">
+                        <span class="imp">Imports</span> and <span class="exp">exports</span> over time
+                        <br><span class="diminish">(in billions of dollars)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2">
+                <div class="trl_tooltip"></div>
+                <div class="colHeader">
+                    <div class="txt">Trade within the FTA</div>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="svgTimeline"></div>
+                <div class="playPause">
+                    <div class="play"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+                    <div class="pause"><i class="fa fa-pause-circle-o" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            <div class="col col3">
+                <div class="colHeader">
+                    <div class="txt">Commodities</div>
+                </div>
+                <div class="commodityList">
+                    <div class="commodity current" data-commod="all">all commodities</div>
+                    <div class="commodity" data-commod="88_89">aircraft and ships</div>
+                    <div class="commodity" data-commod="01_05">animal products</div>
+                    <div class="commodity" data-commod="87">automotive</div>
+                    <div class="commodity" data-commod="28_38">chemical products</div>
+                    <div class="commodity" data-commod="2709">crude oil</div>
+                    <!-- <div class="commodity" data-commod="64_67">footwear and headgear</div> -->
+                    <div class="commodity" data-commod="41_43">leathers and furs</div>
+                    <div class="commodity" data-commod="84_85">machinery</div>
+                    <div class="commodity" data-commod="72_83">metals</div>
+                    <div class="commodity" data-commod="25_26">mineral products</div>
+                    <div class="commodity" data-commod="39_40">plastics and rubbers</div>
+                    <div class="commodity" data-commod="16_24">prepared food</div>
+                    <div class="commodity" data-commod="68_71">stone and glass</div>
+                    <div class="commodity" data-commod="50_63">textiles</div>
+                    <div class="commodity" data-commod="06_15">vegetable products</div>
+                    <div class="commodity" data-commod="44_49">wood products</div>
+                </div>
+            </div>
+            <div class="legendDiv"></div>
+            <div class="trl_notes">
+                <div class="left">
+                    <!-- <div class="expandInfo"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+                    <div class="expandInstructions"><i class="fa fa-question-circle" aria-hidden="true"></i></div> -->
+                </div>
+                <div class="right">
+                    <p>Data source: <a href="https://comtrade.un.org/" target="_blank">United Nations Comtrade Database</a>
+                        </br>Data Visualization by Thomson Reuters Labs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <svg width="100%" height="100%" viewBox="0 0 73 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+            <g transform="matrix(1,0,0,1,-385.117,-563.907)" id="svgHex">
+                <g transform="matrix(1.60458,0,0,1.52433,209.643,-177.451)" vector-effect="non-scaling-stroke">
+                    <path class="hexPath" d="M128.215,488.769C130.471,487.466 133.203,487.466 135.459,488.769C139.098,490.87 144.741,494.128 148.847,496.498C152.027,498.334 154.004,501.85 154.004,505.668C154.004,510.728 154.004,517.686 154.004,521.749C154.004,523.798 152.943,525.685 151.236,526.671C147.128,529.042 139.435,533.484 135.073,536.002C133.057,537.166 130.617,537.166 128.602,536.002C124.485,533.625 117.401,529.536 113.164,527.09C111.01,525.846 109.67,523.464 109.67,520.877C109.67,516.026 109.67,508.103 109.67,503.379C109.67,500.972 110.916,498.756 112.921,497.599C116.999,495.245 123.97,491.22 128.215,488.769Z" />
+                </g>
+            </g>
+        </svg>
+    </div>
+    </div>
+    <!-- for production concat and min these -->
+   <!--  <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/d3-selection-multi.v1.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/TRL_common.js"></script>
+    <script src="js/pym.js"></script>
+    <script src="js/rb_fta_timelines_15.js"></script> -->
+    <script src="js/min/rb_fta_timelines_15-min.js"></script>
+</body>
+
+</html>

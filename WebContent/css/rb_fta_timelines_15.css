@@ -1,0 +1,817 @@
+@CHARSET "ISO-8859-1";
+/*----------  vars  ----------*/
+/*----------  global  ----------*/
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	background: #fff;
+	color: #4d4d4d;
+	font-weight: 100;
+	line-height: 22px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.trl_wrapper {
+	margin-top: 0;
+	display: table;
+	overflow: hidden;
+}
+
+.trl_wrapper .trl_modal {
+	display: none;
+	position: absolute;
+	color: #fff;
+	font-weight: 300;
+	z-index: 100;
+	width: 100%;
+}
+
+.trl_wrapper .trl_modal .bg {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.85);
+}
+
+.trl_wrapper .trl_modal .content {
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.trl_wrapper .trl_modal .content .info {
+	position: absolute;
+}
+
+.trl_wrapper .trl_modal .content .info .header {
+	font-size: 24px;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+
+.trl_wrapper .trl_modal .content .info.start {
+	top: 60px;
+	left: 50%;
+	margin-left: -350px;
+	width: 700px;
+}
+
+.trl_wrapper .trl_modal .content .info.col1 {
+	top: 300px;
+	left: 50px;
+	width: 200px;
+}
+
+.trl_wrapper .trl_modal .content .info.tline {
+	left: 50px;
+	top: 650px;
+	width: 250px;
+}
+
+.trl_wrapper .trl_modal .content .info.col2 {
+	top: 350px;
+	left: 400px;
+	width: 300px;
+}
+
+.trl_wrapper .trl_modal .content .info.col3 {
+	top: 300px;
+	right: 50px;
+	width: 150px;
+}
+
+.trl_wrapper .trl_modal .content .info.aboutData {
+	bottom: 0;
+	right: 20px;
+	width: 600px;
+}
+
+.trl_wrapper .trl_modal a {
+	color: #ffa100;
+	text-decoration: none;
+}
+
+.trl_wrapper .trl_modal a:hover {
+	text-decoration: underline;
+}
+
+.trl_wrapper .trl_modal .close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	font-size: 22px;
+}
+
+.trl_wrapper .trl_modal .close:hover {
+	opacity: 0.8;
+}
+
+.trl_wrapper .trl_modal.current {
+	display: block;
+}
+
+.tabs {
+	float: left;
+	width: 100%;
+	margin: 10px 0;
+}
+
+.tabs .tabRow {
+	text-align: center;
+}
+
+.tabs .tabRow .tab {
+	display: inline-block;
+	height: 30px;
+	padding: 10px 25px 5px;
+	background: #666;
+	cursor: pointer;
+	font-weight: 300;
+	border-radius: 5px 5px 0 0;
+}
+
+.tabs .tabRow .tab:hover {
+	background: #afafaf;
+	color: #4d4d4d;
+}
+
+.tabs .tabRow .tab.current {
+	background: #fff;
+	color: #4d4d4d;
+}
+
+.tabs .tabContent {
+	float: left;
+	width: 100%;
+	background: #fff;
+	border-radius: 5px;
+	margin-top: -1px;
+}
+
+.tabs .tabContent .section {
+	display: none;
+	padding-top: 5px;
+}
+
+.tabs .tabContent .section img {
+	width: 100%;
+}
+
+.tabs .tabContent .section.current {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+.debug {
+	position: absolute;
+	left: 10px;
+	top: 500px;
+	width: 300px;
+	display: none;
+}
+
+.trl_tooltip {
+	border: 2px solid #999;
+	border-radius: 5px;
+	transition: 0.2s;
+	width: 220px;
+	padding: 10px;
+	font-weight: 300;
+	line-height: 18px;
+}
+
+.trl_tooltip strong {
+	font-weight: 500;
+	color: #0099c4;
+}
+
+.trl_pageHeader {
+	line-height: 40px;
+	width: 100%;
+	font-weight: 300;
+	text-align: center;
+	background: #eaeaea;
+	padding: 20px 0 10px;
+	margin: 8px 0;
+}
+
+.trl_pageHeader .subhead {
+	font-size: 18px;
+	color: #666;
+}
+
+.trl_pageHeader .subhead .help {
+	display: inline-block;
+	margin-right: 20px;
+	cursor: pointer;
+	line-height: 18px;
+}
+
+.trl_pageHeader .subhead .help .fa {
+	color: #afafaf;
+}
+
+.trl_pageHeader .subhead .help:hover {
+	opacity: 0.8;
+	border-bottom: 1px dashed #4d4d4d;
+}
+
+.trl_pageHeader .subhead .help:hover .fa {
+	color: #4d4d4d;
+}
+
+.trl_tradeflow_subhead {
+	float: left;
+	width: 90%;
+	background: #eaeaea;
+	padding: 10px 5%;
+	margin-top: 15px;
+	display: none;
+}
+
+.trl_tradeflow_subhead img {
+	float: left;
+	margin-top: 1%;
+	width: 15%;
+}
+
+.trl_tradeflow_subhead .txt {
+	float: left;
+	width: 80%;
+	margin: 10px 0 0 30px;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+.trl_tradeflow_subhead .txt .import {
+	color: #77a22d;
+	font-weight: 500;
+}
+
+.trl_tradeflow_subhead .txt .export {
+	color: #0099c4;
+	font-weight: 500;
+}
+
+.trl_chart {
+	clear: none;
+}
+
+.trl_chart .col {
+	float: left;
+}
+
+.trl_chart .col .colHeader {
+	position: relative;
+	font-style: italic;
+	margin: 0 auto 20px 0;
+	font-weight: 700;
+	line-height: 18px;
+	height: 70px;
+}
+
+.trl_chart .col .colHeader .txt {
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: auto;
+	text-align: center;
+}
+
+.trl_chart .col .colHeader .txt.col1txt {
+	width: 210px;
+	top: 50px;
+}
+
+.trl_chart .col .colHeader .diminish {
+	font-size: 11px;
+	color: #666;
+}
+
+.trl_chart .col svg {
+	float: left;
+	clear: left;
+}
+
+.trl_chart .col.col1 {
+	width: 320px;
+}
+
+.trl_chart .col.col2 {
+	width: 440px;
+}
+
+.trl_chart .col.col3 {
+	width: 200px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.trl_chart .commodityList {
+	float: left;
+}
+
+.trl_chart .commodityList .commodity {
+	position: relative;
+	background: #ddd;
+	padding: 3px 7px;
+	float: left;
+	clear: left;
+	cursor: pointer;
+	margin: 0 0 5px 30px;
+	font-size: 13px;
+	line-height: 17px;
+	transition-duration: 0.2s;
+	font-weight: 300;
+	display: inline-block;
+	height: 18px;
+}
+
+.trl_chart .commodityList .commodity:hover {
+	background: #777;
+	color: #fff;
+}
+
+.trl_chart .commodityList .commodity.current {
+	background: #555;
+	color: #fff;
+	font-weight: 300;
+	padding-left: 10px;
+	margin-left: 20px;
+	font-weight: 500;
+}
+
+.trl_chart .commodityList .commodity.current:after {
+	content: '';
+	display: block;
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	margin-top: -12px;
+	width: 0;
+	height: 0;
+	border-top: 12px solid transparent;
+	border-right: 12px solid #555;
+	border-bottom: 12px solid transparent;
+	border-left: 12px solid transparent;
+}
+
+/*----------  mini mirrored bar charts  ----------*/
+.yearLabel {
+	font-size: 12px;
+	text-anchor: start;
+}
+
+.yearLabel.end {
+	text-anchor: middle;
+}
+
+.miniPlot {
+	float: left;
+	position: relative;
+}
+
+.miniCountryLabel {
+	font-size: 13px;
+	text-anchor: middle;
+	font-weight: 300;
+}
+
+.inceptionYearLine {
+	stroke: #6e6e6e;
+	stroke-width: 0.5;
+	stroke-dasharray: 5px 5px;
+}
+
+.inceptionYearLabel {
+	font-style: italic;
+}
+
+.currentYearLine {
+	stroke: #d8d8d8;
+}
+
+.currentYearLabel {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.hitRect {
+	fill: #222;
+	opacity: 0;
+	cursor-events: none;
+}
+
+.bar.current {
+	stroke: #666;
+}
+
+.bar.totalExport.current {
+	stroke-opacity: 0.6;
+}
+
+.bar.totalImport.current {
+	stroke-opacity: 0.6;
+}
+
+.bar.hilight {
+	fill: #000;
+	opacity: 0;
+}
+
+.bar.hilight.current {
+	opacity: 0.2;
+}
+
+.ftaStartLine {
+	stroke: #999;
+	stroke-dasharray: 2px 2px;
+}
+
+.ftaStartLabel {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.barLabelGroup .labelRect {
+	stroke: #fff;
+	stroke-width: 2px;
+	fill: #77a22d;
+}
+
+.barLabelGroup .labelRect.exports_intra {
+	fill: #0099c4;
+}
+
+.barLabelGroup .labelRect.imports_total {
+	fill: #bbd196;
+}
+
+.barLabelGroup .labelRect.exports_total {
+	fill: #80cce2;
+}
+
+.barLabelGroup .labelText {
+	font-size: 12px;
+	text-anchor: middle;
+	fill: #fff;
+	font-weight: 500;
+}
+
+.barLabelGroup .labelText.imports_total, .barLabelGroup .labelText.exports_total
+	{
+	fill: #666;
+}
+
+/*----------  graph  ----------*/
+.hexPath {
+	fill: #ececec;
+	stroke-width: 3px;
+}
+
+.hexPath.current {
+	stroke: #4d4d4d !important;
+}
+
+.hexUse {
+	transition: 0.3s;
+	stroke: #ddd !important;
+}
+
+.hexUse.current {
+	stroke: #4d4d4d !important;
+}
+
+.ftaGraph {
+	float: right;
+}
+
+.graphYear {
+	text-anchor: middle;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.graphYearBg {
+	fill: #fff;
+	fill-opacity: 0.7;
+}
+
+.graphLine {
+	fill: none;
+	stroke: #0099c4;
+	stroke-width: 4px;
+}
+
+.circ {
+	fill: #ddd;
+}
+
+.connector {
+	stroke-width: 3px;
+	fill: none;
+}
+
+.connector.flow {
+	stroke-dasharray: 15px 30px;
+	stroke: #fff;
+	stroke-opacity: 0.3;
+}
+
+.minWidth {
+	fill: none;
+	stroke: #fff;
+	stroke-width: 20px;
+	opacity: 0;
+}
+
+.minWidth.hideMe {
+	stroke-width: 0;
+	display: none;
+}
+
+.connectorHilight {
+	stroke: #4d4d4d;
+	fill: none;
+	opacity: 0;
+	transition: 0.1s;
+}
+
+.connectorHilight.current {
+	opacity: 1;
+}
+
+.connectorHilight.hideMe {
+	display: none;
+}
+
+.arrowLine {
+	fill: none;
+	stroke-width: 10px;
+	stroke: rgba(255, 255, 255, 0.5);
+}
+
+.arrowHead {
+	stroke: none;
+	fill: rbga(#fff, 0.5);
+}
+
+.countryLabel {
+	font-size: 13px;
+	text-anchor: middle;
+	font-weight: 500;
+	fill: #666;
+	pointer-events: none;
+}
+
+.trl_fta_display {
+	position: absolute;
+	bottom: 200px;
+	right: 200px;
+}
+
+.trl_fta_display .year {
+	font-size: 28px;
+	font-weight: 100;
+}
+
+.legendDiv {
+	float: left;
+	clear: left;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+
+.legendSVG {
+	float: left;
+	margin-top: 15px;
+}
+
+.blockText {
+	font-size: 13px;
+}
+
+.testBaseLine {
+	stroke: #dedede;
+	fill: none;
+	stroke-width: 20;
+}
+
+.testFlowLine {
+	stroke: #fff;
+	stroke-width: 0;
+	fill: none;
+	pointer-events: none;
+}
+
+.testCirc {
+	fill: #fff;
+	fill-opacity: 0.4;
+	pointer-events: none;
+}
+
+.timeline {
+	float: left;
+	clear: left;
+	height: 40px;
+	width: 320px;
+	margin-top: -10px;
+	position: relative;
+}
+
+.timeline .timelineMarker {
+	cursor: pointer;
+}
+
+.timeline .timelineMarker .markerBG {
+	fill: #555;
+}
+
+.timeline .timelineMarker .markerTxt {
+	fill: #fff;
+	font-weight: 500;
+	font-size: 13px;
+	text-anchor: middle;
+}
+
+.timeline .timelineMarker .markerNotch {
+	fill: #555;
+}
+
+.timeline .playPause {
+	height: 30px;
+	width: 30px;
+	margin: 0 auto;
+	position: absolute;
+	left: 2px;
+	top: 0px;
+	cursor: pointer;
+	font-size: 22px;
+	color: #afafaf;
+}
+
+.timeline .playPause:hover {
+	color: #666;
+}
+
+.timeline .playPause .play {
+	position: absolute;
+	height: 30px;
+	width: 30px;
+}
+
+.timeline .playPause .pause {
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	display: none;
+}
+
+.timelineText {
+	font-size: 12px;
+	text-anchor: middle;
+	cursor: pointer;
+}
+
+.timelineText.current {
+	font-weight: 700;
+}
+
+.timelineAxis path {
+	stroke: #666;
+}
+
+.timelineAxis text {
+	display: none;
+}
+
+.trl_notes {
+	float: right;
+	clear: none;
+}
+
+.trl_notes p {
+	margin: 0;
+}
+
+.trl_notes .left {
+	float: left;
+	margin-right: 20px;
+	margin-top: 22px;
+}
+
+.trl_notes .left div {
+	color: #afafaf;
+	display: inline-block;
+	margin-left: 10px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.trl_notes .left div:hover {
+	color: #666;
+}
+
+.trl_notes .right {
+	float: left;
+}
+
+@media ( max-width : 980px) {
+	.trl_chart .col.col3 {
+		right: -30px;
+	}
+}
+
+@media ( max-width : 930px) {
+	.trl_chart .col.col1 {
+		width: 45%;
+	}
+	.trl_chart .col.col2 {
+		width: 40%;
+	}
+	.trl_chart .col.col2 svg {
+		margin-left: -40px;
+	}
+	.trl_chart .col.col3 {
+		position: relative;
+		width: 100%;
+		right: 0;
+	}
+	.trl_chart .col.col3 .colHeader {
+		height: 50px;
+	}
+	.trl_chart .col.col3 .colHeader .txt {
+		top: 30px;
+	}
+	.trl_chart .col.col3 .commodityList {
+		margin-left: 10px;
+	}
+	.trl_chart .col.col3 .commodity {
+		clear: none;
+		margin: 0 0 5px 5px;
+	}
+	.trl_chart .col.col3 .commodity:after {
+		border: none;
+	}
+	.trl_wrapper .trl_modal .content .info.tline {
+		top: 600px;
+	}
+	.trl_wrapper .trl_modal .content .info.col3 {
+		top: auto;
+		bottom: 200px;
+		right: 50px;
+		width: 300px;
+	}
+	.trl_wrapper .trl_modal .content .info.aboutData {
+		width: 95%;
+		bottom: 20px;
+	}
+}
+
+.staticImage {
+	display: none;
+	width: 100%;
+	height: auto;
+}
+
+.staticImage img {
+	width: 100%;
+}
+
+.staticImage .message {
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 15px;
+	background: #4d4d4d;
+	color: #fff;
+	padding: 5px 10px 15px;
+}
+
+@media ( max-width : 723px) {
+	.trl_chart {
+		display: none;
+	}
+	.staticImage {
+		display: block;
+	}
+	.tabs .tabRow .tab {
+		font-size: 4vw;
+		padding: 10px 20px 5px;
+	}
+}

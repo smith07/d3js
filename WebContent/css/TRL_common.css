@@ -1,0 +1,103 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background: #353535;
+	color: #eee;
+	font-size: 16px;
+	font-family: "Knowledge", sans-serif;
+}
+
+body.trl_light {
+	background: #eee;
+	color: #353535;
+}
+
+body.trl_light a {
+	color: #888;
+}
+
+a {
+	color: #777;
+}
+
+.trl_wrapper {
+	margin: 10px auto;
+	position: relative;
+	max-width: 970px;
+}
+
+.trl_pageHeader {
+	font-weight: 100;
+	margin: 15px 0;
+	font-size: 40px;
+	float: left;
+}
+
+.trl_subhead {
+	float: left;
+	clear: left;
+}
+
+.trl_chartHeader {
+	font-size: 22px;
+	font-weight: 100;
+	float: left;
+	clear: left;
+}
+
+.trl_chart {
+	float: left;
+	clear: left;
+	position: relative;
+	width: 100%;
+	min-height: 300px;
+}
+
+.trl_notes {
+	float: left;
+	clear: left;
+	margin: 20px 0;
+	font-size: 13px;
+}
+
+.trl_notes a {
+	color: #4d4d4d;
+}
+
+.trl_tooltip {
+	position: absolute;
+	z-index: 100;
+	background: rgba(255, 255, 255, 0.95);
+	color: #222;
+	padding: 10px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.trl_axis path, .trl_axis line {
+	fill: none;
+	stroke: #999;
+	shape-rendering: crispEdges;
+}
+
+.trl_axis text {
+	font-size: 13px;
+	fill: #b3b3b3;
+	pointer-events: none;
+	font-weight: 100;
+}
+
+.trl_dot:hover {
+	stroke: #bbb;
+}
+
+.trl_line {
+	fill: none;
+	stroke: #999;
+}
+
+.trl_area {
+	fill: #444;
+	fill-opacity: 0.3;
+	stroke: #555;
+}
